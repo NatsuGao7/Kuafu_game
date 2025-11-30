@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>夸父追日 - 单键跑酷小游戏</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="game-shell">
+  <h1>Kuafu Chasing the Sun Game · 夸父追日</h1>
+  <div class="subtitle">单键跑酷小游戏</div>
+
+  <div class="game-container">
+    <canvas id="gameCanvas" width="960" height="540"></canvas>
+
+    <!-- 主菜单 -->
+    <div id="menuScreen" class="overlay-screen">
+      <div class="overlay-card">
+        <div class="overlay-title">夸父追日</div>
+        <div class="overlay-subtitle">按一个键，就能体验上古神话里的勇敢与坚持。</div>
+
+        <!-- 难度选择 -->
+        <div class="difficulty-block">
+          <div class="difficulty-label">选择难度：</div>
+          <div class="difficulty-buttons">
+            <button class="difficulty-btn active" data-difficulty="normal">普通</button>
+            <button class="difficulty-btn" data-difficulty="hard">困难</button>
+            <button class="difficulty-btn" data-difficulty="hell">地狱</button>
+          </div>
+          <div class="difficulty-tip" id="difficultyTip">
+            当前难度：普通 · 适合第一次体验的小玩家
+          </div>
+        </div>
+
+        <div class="overlay-buttons-main">
+          <button id="btnStart" class="primary">开始游戏</button>
+          <div class="overlay-buttons-row">
+            <button id="btnHelp" class="secondary">帮助</button>
+            <button id="btnStory" class="secondary">背景</button>
+          </div>
+        </div>
+
+        <div class="overlay-footer">
+          小提示：用键盘 <b>空格键</b> 或 <b>鼠标左键</b> 就可以玩，不用记复杂操作。
+        </div>
+      </div>
+    </div>
+
+    <!-- 帮助界面 -->
+    <div id="helpScreen" class="overlay-screen hidden">
+      <div class="overlay-card">
+        <div class="overlay-section-title">帮助 · 怎么玩？</div>
+        <div class="overlay-text">
+          <ul>
+            <li><b>操作方式</b>：按 <b>空格键</b> 或 <b>鼠标左键</b>，夸父就会跳起来。</li>
+            <li><b>目标</b>：在体力没有耗尽之前，追上前面的太阳。</li>
+            <li><b>躲避障碍</b>：石头、火焰都是障碍，撞到会 <b>扣体力。</li>
+            <li><b>收集水滴</b>：看到蓝色的水滴，要努力吃到，可以 <b>恢复体力。</li>
+            <li>上方可以看到 <b>体力条</b>，下面可以看到 <b>距离太阳还差多少米</b>。</li>
+          </ul>
+          <p style="margin-top:4px;">
+            当“距离太阳”变成 0 时，夸父追上太阳，游戏胜利；<br/>
+            当体力变成 0 时，夸父太渴了，游戏失败，可以再试一次。
+          </p>
+        </div>
+
+        <button id="btnBackFromHelp" class="secondary">返回主菜单</button>
+      </div>
+    </div>
+
+    <!-- 背景故事界面 -->
+    <div id="storyScreen" class="overlay-screen hidden">
+      <div class="overlay-card">
+        <div class="overlay-section-title">背景 · 夸父追日的故事</div>
+        <div class="overlay-text">
+          <p>
+            在中国古代神话中，夸父是一个力气特别大、心地又很善良的巨人。
+          </p>
+          <p>
+            有一天，他看到太阳从东边升起、向西边落下，就决定要把太阳追下来，
+            给人们带来更多的光明和温暖。这就是“夸父追日”的故事。
+          </p>
+          <p>
+            夸父一路飞奔，非常口渴，喝干了黄河、渭河的水，还是觉得不够，最后因为太渴而倒下。
+            他虽然没有成功，却表现出<b>非常大的勇气和坚持不放弃的精神</b>。
+          </p>
+          <p>
+            在这个小游戏里，你可以帮夸父一边追太阳，一边收集水滴，让他跑得更远、更久！
+          </p>
+        </div>
+
+        <button id="btnBackFromStory" class="secondary">返回主菜单</button>
+      </div>
+    </div>
+
+    <!-- 暂停界面 -->
+    <div id="pauseScreen" class="overlay-screen hidden">
+      <div class="overlay-card">
+        <div class="overlay-section-title">游戏已暂停</div>
+        <div class="overlay-text">
+          你可以选择继续游戏，或者重新开始一局，再或者返回主菜单重新选择难度。
+        </div>
+        <div class="overlay-buttons-row">
+          <button id="btnResume" class="primary">继续游戏</button>
+          <button id="btnRestart" class="secondary">重新开始</button>
+          <button id="btnBackToMenu" class="secondary">返回主菜单</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 水印（两行） -->
+    <div class="watermark">
+      <div>Created by Xinrui Zhang</div>
+      <div>Supervised by Zhuangzhi Gao</div>
+    </div>
+
+    <!-- 暂停按钮 -->
+    <button id="btnPause" class="pause-button hidden">⏸</button>
+  </div>
+
+  <div class="hint">提示：开始游戏后，按空格 / 点击鼠标让夸父跳跃。</div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
